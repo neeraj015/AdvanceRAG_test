@@ -34,7 +34,8 @@ if prompt:
         vectorstore = get_vectorstore()
         if vectorstore is None:
             st.error("Failed to load the vector store")
-            return
+            st.stop()
+            #return
 
         qa_chain = RetrievalQA.from_chain_type(
             llm=ChatGroq(
