@@ -20,6 +20,7 @@ def get_vectorstore():
 def set_custom_prompt(template_text):
     return PromptTemplate(template=template_text, input_variables=["context", "question"])
 
+
 def load_llm(provider, prompt_template):
     if provider == "Groq":
         return ChatGroq(
@@ -31,8 +32,10 @@ def load_llm(provider, prompt_template):
         return HuggingFaceEndpoint(
             repo_id="HuggingFaceH4/zephyr-7b-beta",  # Free HuggingFace model
             temperature=0.5,
-            model_kwargs={"token": st.secrets["HUGGINGFACEHUB_API_TOKEN"], "max_length": 512}
+            huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"],
+            model_kwargs={"max_length": 512}
         )
+
 
 def main():
     st.title("Ask Chatbot!")
