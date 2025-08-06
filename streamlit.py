@@ -66,6 +66,7 @@ def main():
         
         #HUGGINGFACE_REPO_ID="mistralai/Mistral-7B-Instruct-v0.3" # PAID
         #HF_TOKEN=os.environ.get("HUGGINGFACEHUB_API_TOKEN")  
+        #HF_TOKEN = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
 
         # Created a Groq API key and added it to .env file
         
@@ -78,7 +79,8 @@ def main():
                 llm=ChatGroq(
                     model_name="meta-llama/llama-4-maverick-17b-128e-instruct",  # free, fast Groq-hosted model
                     temperature=0.0,
-                    groq_api_key=os.environ["GROQQ_API_KEY"],
+                    #groq_api_key=os.environ["GROQQ_API_KEY"],
+                    groq_api_key=st.secrets["GROQQ_API_KEY"],
                 ),
                 chain_type="stuff",
                 retriever=vectorstore.as_retriever(search_kwargs={'k':3}),
