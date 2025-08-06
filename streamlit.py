@@ -30,7 +30,7 @@ def load_llm(provider, prompt_template):
         )
     else:
         return HuggingFaceEndpoint(
-            repo_id="tiiuae/Falcon3-7B-Instruct",  # Free HuggingFace model
+            repo_id="mistralai/Mistral-7B-Instruct-v0.1",  # Free HuggingFace model
             temperature=0.5,
             huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
             #model_kwargs={"max_length": 512}
