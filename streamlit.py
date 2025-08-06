@@ -23,6 +23,10 @@ if prompt:
     Start the answer directly. Avoid small talk or unnecessary explanations.
     """
 
+    #HUGGINGFACE_REPO_ID="mistralai/Mistral-7B-Instruct-v0.3" # PAID
+    #HF_TOKEN=os.environ.get("HUGGINGFACEHUB_API_TOKEN")  #local
+    #HF_TOKEN = st.secrets["HUGGINGFACEHUB_API_TOKEN"] # web
+    
     # Pick prompt based on dropdown selection
     selected_template = SHORT_ANSWER_TEMPLATE if answer_type == "Short" else DETAILED_ANSWER_TEMPLATE
 
@@ -31,9 +35,6 @@ if prompt:
         if vectorstore is None:
             st.error("Failed to load the vector store")
             return
-            #HUGGINGFACE_REPO_ID="mistralai/Mistral-7B-Instruct-v0.3" # PAID
-            #HF_TOKEN=os.environ.get("HUGGINGFACEHUB_API_TOKEN")  #local
-            #HF_TOKEN = st.secrets["HUGGINGFACEHUB_API_TOKEN"] # web
 
         qa_chain = RetrievalQA.from_chain_type(
             llm=ChatGroq(
