@@ -32,8 +32,8 @@ def load_llm(provider, prompt_template):
         return HuggingFaceEndpoint(
             repo_id="HuggingFaceH4/zephyr-7b-beta",  # Free HuggingFace model
             temperature=0.5,
-            huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"],
-            model_kwargs={"max_length": 512}
+            huggingfacehub_api_token=st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+            #model_kwargs={"max_length": 512}
         )
 
 
@@ -52,7 +52,7 @@ def main():
     Context: {context}
     Question: {question}
 
-    Provide a short and precise answer.
+    Avoid small talk or unnecessary explanations. Provide precise answer.
     """
 
     DETAILED_ANSWER_TEMPLATE = """
